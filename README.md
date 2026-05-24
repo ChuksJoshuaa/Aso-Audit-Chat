@@ -68,6 +68,40 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
+## Docker
+
+Build and run with Docker:
+
+```bash
+npm run docker:run
+```
+
+Stop containers:
+
+```bash
+npm run docker:stop
+```
+
+Clean up Docker resources:
+
+```bash
+npm run docker:clean
+```
+
+## Testing
+
+Run Cypress e2e tests:
+
+```bash
+npm run test:e2e
+```
+
+Open Cypress interactive mode:
+
+```bash
+npm run test:e2e:open
+```
+
 ## How It Works
 
 1. **User pastes an App Store URL** (e.g., `https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580`)
