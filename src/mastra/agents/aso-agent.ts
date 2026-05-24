@@ -1,5 +1,5 @@
 import { Agent } from "@mastra/core/agent";
-import { openai } from "@ai-sdk/openai";
+import { getModel } from "../config";
 import {
   validateAppStoreUrl,
   fetchAppMetadata,
@@ -95,7 +95,7 @@ export const asoAuditAgent = new Agent({
   id: "aso-audit-agent",
   name: "ASO Audit Agent",
   instructions: ASO_AUDIT_INSTRUCTIONS,
-  model: openai("gpt-4o"),
+  model: getModel(),
   tools: {
     validateAppStoreUrl,
     fetchAppMetadata,

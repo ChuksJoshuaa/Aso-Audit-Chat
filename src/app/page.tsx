@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 import { useChatStream } from "@/hooks";
 import { ChatMessage, ChatInput, TypingIndicator } from "@/components";
-import { Sparkles } from "lucide-react";
+import { Sparkles, AppWindow } from "lucide-react";
 
 export default function Home() {
   const { messages, append, isLoading, status } = useChatStream();
@@ -26,64 +26,64 @@ export default function Home() {
       messages[messages.length - 1].content === "");
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-950 to-zinc-900 flex flex-col">
-      <header className="flex-shrink-0 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-white" />
+    <div className="flex h-screen flex-col bg-background">
+      <header className="shrink-0 border-b border-border bg-card/50 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-purple-600">
+            <Sparkles className="h-5 w-5 text-white" />
           </div>
           <div>
-            <h1 className="text-lg font-semibold text-zinc-100">
-              ASO Audit Chat
-            </h1>
-            <p className="text-sm text-zinc-500">
-              App Store Optimization insights powered by AI
+            <h1 className="text-base font-semibold text-foreground">ASO Audit</h1>
+            <p className="text-xs text-muted-foreground">
+              App Store Optimization Analysis
             </p>
           </div>
         </div>
       </header>
 
-      <main className="flex-1 flex flex-col max-w-4xl mx-auto w-full">
+      <main className="flex flex-1 flex-col overflow-hidden">
         <div
           ref={scrollRef}
-          className="flex-1 overflow-y-auto px-4 py-6 space-y-6 scrollbar-thin"
+          className="flex-1 overflow-y-auto px-4 py-6"
         >
-          {messages.length === 0 && (
-            <div className="flex flex-col items-center justify-center h-full text-center py-20">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center mb-6">
-                <Sparkles className="w-8 h-8 text-blue-400" />
+          <div className="mx-auto max-w-3xl space-y-4">
+            {messages.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-16 text-center">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 to-purple-600/20">
+                  <AppWindow className="h-8 w-8 text-primary" />
+                </div>
+                <h2 className="mb-2 text-xl font-semibold text-foreground">
+                  Welcome to ASO Audit
+                </h2>
+                <p className="mb-6 max-w-md text-sm text-muted-foreground">
+                  Paste an Apple App Store URL to get a comprehensive audit with
+                  actionable recommendations to improve your app&apos;s visibility.
+                </p>
+                <div className="rounded-lg border border-border bg-card p-4">
+                  <p className="mb-2 text-xs text-muted-foreground">Example URL:</p>
+                  <code className="break-all text-xs text-primary">
+                    https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580
+                  </code>
+                </div>
               </div>
-              <h2 className="text-xl font-semibold text-zinc-100 mb-2">
-                Welcome to ASO Audit
-              </h2>
-              <p className="text-zinc-400 max-w-md mb-8">
-                Paste an Apple App Store URL to get a comprehensive ASO audit
-                with actionable recommendations.
-              </p>
-              <div className="bg-zinc-800/30 rounded-xl p-4 border border-zinc-800">
-                <p className="text-sm text-zinc-500 mb-2">Try an example:</p>
-                <code className="text-sm text-blue-400 break-all">
-                  https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580
-                </code>
-              </div>
-            </div>
-          )}
+            )}
 
-          {messages.map((message) =>
-            message.content ? (
-              <ChatMessage
-                key={message.id}
-                role={message.role}
-                content={message.content}
-              />
-            ) : null
-          )}
+            {messages.map((message) =>
+              message.content ? (
+                <ChatMessage
+                  key={message.id}
+                  role={message.role}
+                  content={message.content}
+                />
+              ) : null
+            )}
 
-          {showTypingIndicator && <TypingIndicator />}
+            {showTypingIndicator && <TypingIndicator />}
+          </div>
         </div>
 
-        <div className="flex-shrink-0 border-t border-zinc-800/50 bg-zinc-950/80 backdrop-blur-sm p-4">
-          <div className="max-w-4xl mx-auto">
+        <div className="shrink-0 border-t border-border bg-card/50 backdrop-blur-sm p-4">
+          <div className="mx-auto max-w-3xl">
             <ChatInput
               onSubmit={handleSubmit}
               isLoading={isLoading}
@@ -93,9 +93,8 @@ export default function Home() {
                   : "Type your message..."
               }
             />
-            <p className="text-xs text-zinc-600 text-center mt-3">
-              Powered by Mastra AI • Results may vary based on App Store
-              availability
+            <p className="mt-2 text-center text-xs text-muted-foreground">
+              Powered by Mastra AI
             </p>
           </div>
         </div>

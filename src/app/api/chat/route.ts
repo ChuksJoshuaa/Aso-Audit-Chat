@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   const { messages } = body;
 
   const agent = mastra.getAgent("asoAuditAgent");
-  const result = await agent.stream(messages);
+  const result = await agent.streamLegacy(messages);
 
   const encoder = new TextEncoder();
   const stream = new ReadableStream({

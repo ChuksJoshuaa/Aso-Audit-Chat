@@ -20,7 +20,7 @@ export function ChatInput({
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 200)}px`;
+      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 150)}px`;
     }
   }, [input]);
 
@@ -39,8 +39,8 @@ export function ChatInput({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative">
-      <div className="flex items-end gap-2 bg-zinc-900 border border-zinc-800 rounded-2xl p-2 focus-within:border-zinc-700 transition-colors">
+    <form onSubmit={handleSubmit} className="relative w-full">
+      <div className="flex items-end gap-3 rounded-xl border border-border bg-card p-3 shadow-lg transition-all focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20">
         <textarea
           ref={textareaRef}
           value={input}
@@ -49,17 +49,17 @@ export function ChatInput({
           placeholder={placeholder}
           disabled={isLoading}
           rows={1}
-          className="flex-1 bg-transparent text-zinc-100 placeholder-zinc-500 resize-none outline-none px-2 py-2 min-h-[44px] max-h-[200px] scrollbar-thin"
+          className="flex-1 resize-none bg-transparent text-sm text-foreground placeholder-muted-foreground outline-none min-h-[24px] max-h-[150px] leading-relaxed"
         />
         <button
           type="submit"
           disabled={!input.trim() || isLoading}
-          className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:bg-zinc-800 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-all hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {isLoading ? (
-            <Loader2 className="w-5 h-5 text-zinc-400 animate-spin" />
+            <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
-            <Send className="w-5 h-5 text-white" />
+            <Send className="h-4 w-4" />
           )}
         </button>
       </div>
