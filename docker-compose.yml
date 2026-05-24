@@ -5,13 +5,17 @@ services:
       dockerfile: Dockerfile
       args:
         OPENAI_API_KEY: ${OPENAI_API_KEY}
+        ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
         FIRECRAWL_API_KEY: ${FIRECRAWL_API_KEY}
+        AI_MODEL: ${AI_MODEL:-gpt-4o}
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - FIRECRAWL_API_KEY=${FIRECRAWL_API_KEY}
+      - AI_MODEL=${AI_MODEL:-gpt-4o}
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000"]
