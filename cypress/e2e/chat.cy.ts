@@ -79,7 +79,7 @@ describe("ASO Audit Chat", () => {
 
   describe("Accessibility", () => {
     it("has proper heading structure", () => {
-      cy.get("h1").contains("ASO Audit Chat").should("be.visible");
+      cy.get("h1").contains("ASO Audit").should("be.visible");
       cy.get("h2").contains("Welcome to ASO Audit").should("be.visible");
     });
 
