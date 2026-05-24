@@ -2,6 +2,8 @@
 
 A TypeScript chat application that performs comprehensive App Store Optimization (ASO) audits on Apple App Store URLs using Mastra AI agents.
 
+<img src="https://res.cloudinary.com/chuksmbanaso/image/upload/v1779661314/Screenshot_2026-05-24_at_23.20.21_nhtqyo.png" title="Image" alt="image" height="50%">
+
 ## Features
 
 - Paste any Apple App Store URL and receive a detailed ASO audit
