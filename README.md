@@ -186,4 +186,4 @@ The audit scores apps across 10 dimensions:
 
 ## License
 
-MIT
+[MIT](LICENSE)
